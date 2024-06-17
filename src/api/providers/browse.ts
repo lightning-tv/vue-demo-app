@@ -1,7 +1,7 @@
-import api from "..";
-import { convertItemsToTiles, chunkArray } from "../formatters/ItemFormatter";
+import api from '..';
+import { convertItemsToTiles, chunkArray } from '../formatters/ItemFormatter';
 
-let cache = new Map();
+const cache = new Map();
 const leftoverTiles = new Map();
 
 export default function (filter: string) {
@@ -11,12 +11,12 @@ export default function (filter: string) {
       return cache.get(url);
     }
 
-    let result = api.get(url).then((trending) => {
-      let results = trending.results.filter((r) => !r.adult);
-      let tiles = (
+    const result = api.get(url).then((trending) => {
+      const results = trending.results.filter((r) => !r.adult);
+      const tiles = (
         leftoverTiles.has(filter) ? leftoverTiles.get(filter) : []
       ).concat(convertItemsToTiles(results));
-      let chunks = chunkArray(tiles);
+      const chunks = chunkArray(tiles);
       if (chunks[chunks.length - 1].length < 7) {
         leftoverTiles.set(filter, chunks.pop());
       } else {

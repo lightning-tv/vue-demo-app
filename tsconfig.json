@@ -1,23 +1,36 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "ES2019",
-    "module": "esnext",
-    "moduleResolution": "Bundler",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": [
-      "vite/client",
-      "@lightningjs/vite-plugin-import-chunk-url/client"
-    ],
+    "rootDir": ".",
+    "lib": ["ESNext", "DOM", "ES5"],
+    "outDir": "dist",
+    "allowJs": true,
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "sourceMap": true,
+    "declaration": true,
     "noEmit": true,
-    "isolatedModules": true,
-    "noImplicitAny": false,
+    // Temporarily disable this until `solid-js` is released with this PR:
+    // https://github.com/solidjs/solid/pull/1913
+    "skipLibCheck": true,
+
+    // Type Checking / Syntax Rules
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "composite": true,
+
+    // jsx
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "types": ["vue"],
     "paths": {
       "theme": ["./node_modules/@lightningjs/l3-ui-theme-base"],
       "@lightningjs/solid": ["./node_modules/@lightningtv/solid"]
     }
-  }
+  },
+  "include": ["src/**/*"]
 }
