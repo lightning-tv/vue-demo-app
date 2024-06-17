@@ -1,0 +1,54 @@
+{
+  "name": "vue-demo-app",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite --open --host --force",
+    "start:prod": "vite --open --host --force --mode production",
+    "build": "vite build --sourcemap=true",
+    "build:github": "vite build --sourcemap=true --base=/solid-demo-app/",
+    "build:github:dev": "NODE_ENV=development vite build --sourcemap=true --mode development --base=/solid-demo-app/",
+    "build:analyze": "vite-bundle-visualizer",
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview --open --port 8080",
+    "tsc": "tsc",
+    "lint:prettier": "prettier --check \"**/*.{ts,js,cjs,md,tsx}\"",
+    "lint:fix:prettier": "prettier --write \"**/*.{ts,js,cjs,md,tsx}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@lightningjs/l3-ui-theme-base": "^0.3.3",
+    "@lightningjs/renderer": "^0.9.1",
+    "@lightningjs/solid-ui": "^0.18.15",
+    "@lightningtv/solid": "^0.0.12",
+    "@solid-primitives/scheduled": "^1.4.3",
+    "@solidjs/router": "^0.13.5",
+    "proxy-polyfill": "^0.3.2",
+    "solid-js": "^1.8.17",
+    "vite-plugin-babel": "^1.2.0"
+  },
+  "devDependencies": {
+    "@lightningjs/vite-plugin-import-chunk-url": "^0.3.1",
+    "@vitejs/plugin-legacy": "^5.4.1",
+    "gh-pages": "^6.1.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.0",
+    "terser": "^5.31.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.12",
+    "vite-bundle-visualizer": "^1.2.1",
+    "vite-plugin-cross-origin-isolation": "^0.1.6",
+    "vite-plugin-solid": "^2.10.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.{js,cjs,md}": "prettier --write"
+  }
+}
