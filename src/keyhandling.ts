@@ -1,5 +1,5 @@
-import { activeElement } from 'lightning-vue';
-import type { ElementNode } from 'lightning-vue';
+import { activeElement } from '@lightningtv/vue';
+import type { ElementNode } from '@lightningtv/vue';
 import { watch, ref, type Ref } from 'vue';
 
 export function isFunc<T = (...args: unknown[]) => unknown>(
@@ -40,7 +40,7 @@ type KeyMapEventHandlers = {
   [K in keyof KeyMap as `on${Capitalize<K>}`]?: KeyHandler;
 };
 
-declare module 'lightning-vue' {
+declare module '@lightningtv/vue' {
   /**
    * Augment the existing IntrinsicCommonProps interface with our own
    * FocusManager-specific properties.
@@ -99,7 +99,7 @@ const keyMapEntries: Record<string | number, string> = {
   Escape: 'Escape',
 };
 
-const focusPath = ref<ElementNode[]>([]);
+const focusPath = ref<ElementNode[]>();
 const setFocusPath = (value: ElementNode[]) => {
   focusPath.value = value;
 };
@@ -155,7 +155,7 @@ export const useFocusManager = (userKeyMap?: Partial<KeyMap>) => {
     if (e) {
       // Search keyMap for the value of the pressed key or keyCode if value undefined
       const mappedKeyEvent = keyMapEntries[e.key] || keyMapEntries[e.keyCode];
-      const fp = focusPath.value;
+      const fp = focusPath.value || [];
       let finalFocusElm: ElementNode | undefined = undefined;
       for (const elm of fp) {
         finalFocusElm = finalFocusElm || (elm as ElementNode);

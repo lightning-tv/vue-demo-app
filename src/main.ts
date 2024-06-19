@@ -1,9 +1,9 @@
-import { createApp, Config } from 'lightning-vue';
+import { createApp, Config } from '@lightningtv/vue';
 import App from './App.vue';
 import coreExtensionModuleUrl from './AppCoreExtensions.js?importChunkUrl';
 
-const logFps = true;
-Config.debug = false;
+const logFps = false;
+Config.debug = true;
 Config.animationsEnabled = true;
 Config.fontSettings.fontFamily = 'Ubuntu';
 Config.fontSettings.color = 0xf6f6f6ff;

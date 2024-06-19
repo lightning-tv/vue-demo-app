@@ -20,11 +20,26 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-
-        // ...demoPages,
       },
     },
     outDir: 'dist',
     emptyOutDir: true,
   },
+  resolve: {
+    dedupe: [
+      "vue",
+      "@vue/reactivity",
+      "@lightningjs/renderer",
+      "@lightningtv/vue",
+    ],
+  }
+  // optimizeDeps: {
+  //   include: [],
+  //   exclude: [
+  //     "@lightningtv/vue",
+  //     "@lightningjs/renderer",
+  //     "@lightningjs/renderer/core",
+  //     "@lightningjs/renderer/workers/renderer",
+  //   ],
+  // },
 });
