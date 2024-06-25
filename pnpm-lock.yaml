@@ -29,6 +29,9 @@ importers:
       vue:
         specifier: ^3.4.29
         version: 3.4.29(typescript@5.4.5)
+      vue-debounce:
+        specifier: ^5.0.0
+        version: 5.0.0(vue@3.4.29(typescript@5.4.5))
       vue-router:
         specifier: ^4.3.3
         version: 4.3.3(vue@3.4.29(typescript@5.4.5))
@@ -1499,6 +1502,11 @@ packages:
       terser:
         optional: true
 
+  vue-debounce@5.0.0:
+    resolution: {integrity: sha512-heIPTbmFC6Hghhnwbfjw0nYRBYH+YFp/d9xGQ/rDRPUfU6NBIndbJz+i0pHVii4BXXRi1CaljT6H3fDSbbPMvg==}
+    peerDependencies:
+      vue: '>= 3.0.0'
+
   vue-router@4.3.3:
     resolution: {integrity: sha512-8Q+u+WP4N2SXY38FDcF2H1dUEbYVHVPtPCPZj/GTZx8RCbiB8AtJP9+YIxn4Vs0svMTNQcLIzka4GH7Utkx9xQ==}
     peerDependencies:
@@ -2949,6 +2957,10 @@ snapshots:
       rollup: 4.18.0
     optionalDependencies:
       fsevents: 2.3.3
+
+  vue-debounce@5.0.0(vue@3.4.29(typescript@5.4.5)):
+    dependencies:
+      vue: 3.4.29(typescript@5.4.5)
 
   vue-router@4.3.3(vue@3.4.29(typescript@5.4.5)):
     dependencies:

@@ -1,10 +1,10 @@
 <template>
   <node
-    :onLeft="handleLeft"
-    :onRight="handleRight"
+    :onUp="handleUp"
+    :onDown="handleDown"
     :forwardFocus="onGridFocus"
     :selected="props.selected"
-    :onSelectedChanged="selectedChanged"
+    :selectedChanged="handleSelectedChanged"
     :style="[style, props.style]"
   >
     <slot></slot>
@@ -22,20 +22,16 @@ const props = defineProps({
     default: 0,
   },
   scrollIndex: Number,
-  onLeft: Function,
-  onRight: Function,
+  onUp: Function,
+  onDown: Function,
   onLayout: Function,
   onSelectedChanged: Function,
   scroll: String,
   style: Object,
 });
 
-const handleLeft = chainFunctions(props.onLeft, handleNavigation("left"));
-const handleRight = chainFunctions(props.onRight, handleNavigation("right"));
-const selectedChanged = chainFunctions(
-  props.onSelectedChanged,
-  props.scroll !== "none" ? withScrolling(props.x) : undefined
-);
+const handleUp = chainFunctions(props.onUp, handleNavigation("up"));
+const handleDown = chainFunctions(props.onDown, handleNavigation("down"));
 
 const handleLayout = (elm) => {
   const scrollFn = withScrolling(props.x);
@@ -43,13 +39,18 @@ const handleLayout = (elm) => {
   if (props.onLayout) props.onLayout(elm);
 };
 
+const handleSelectedChanged = (selectedIndex) => {
+  if (props.onSelectedChanged) props.onSelectedChanged(selectedIndex);
+  if (props.scroll !== "none") withScrolling(props.x)(selectedIndex);
+};
+
 const style = {
   display: "flex",
   flexBoundary: "fixed",
-  flexDirection: "row",
+  flexDirection: "column",
   gap: 30,
   transition: {
-    x: {
+    y: {
       easing: "ease-in-out",
       duration: 250,
     },

@@ -1,14 +1,14 @@
 <template>
-   <node id="contentBlock" :style="ContentBlockStyle">
-    <text :style="HeadlineStyles">{{title}}</text>
-    <text :style="DescriptionStyles">{{description}}</text>
+  <node id="contentBlock" :style="ContentBlockStyle">
+    <text :style="HeadlineStyles">{{ title }}</text>
+    <text :style="DescriptionStyles">{{ description }}</text>
   </node>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   title: String,
-  description: String
+  description: String,
 });
 
 const blockWidth = 1200;

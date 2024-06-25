@@ -1,6 +1,7 @@
 import { createApp, Config } from '@lightningtv/vue';
 import App from './App.vue';
 import coreExtensionModuleUrl from './AppCoreExtensions.js?importChunkUrl';
+import router from './router';
 
 const logFps = false;
 Config.debug = true;
@@ -15,4 +16,7 @@ Config.rendererOptions = {
   // deviceLogicalPixelRatio: 1
 };
 
-createApp(App);
+createApp(App).then(({app, rootNode}) => {
+  app.use(router);
+  app.mount(rootNode);
+});

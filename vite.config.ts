@@ -14,7 +14,7 @@ export default defineConfig({
         },
       },
     }),
-    vueJsx(),
+   //vueJsx(),
   ],
   build: {
     rollupOptions: {
@@ -28,18 +28,14 @@ export default defineConfig({
   resolve: {
     dedupe: [
       "vue",
+      "@vue/shared",
+      "@vue/runtime-core",
       "@vue/reactivity",
       "@lightningjs/renderer",
       "@lightningtv/vue",
     ],
-  }
-  // optimizeDeps: {
-  //   include: [],
-  //   exclude: [
-  //     "@lightningtv/vue",
-  //     "@lightningjs/renderer",
-  //     "@lightningjs/renderer/core",
-  //     "@lightningjs/renderer/workers/renderer",
-  //   ],
-  // },
+  },
+  optimizeDeps: {
+    exclude: ['@lightningtv/vue'],
+  },
 });
