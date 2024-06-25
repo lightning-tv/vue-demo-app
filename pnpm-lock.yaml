@@ -15,8 +15,8 @@ importers:
         specifier: ^0.3.1
         version: 0.3.1(vite@5.3.1)
       '@lightningtv/vue':
-        specifier: ^0.0.3
-        version: 0.0.3(@lightningjs/renderer@0.9.2)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))
+        specifier: ^0.0.4
+        version: 0.0.4(@lightningjs/renderer@0.9.2)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))
       '@vue/reactivity':
         specifier: ^3.4.29
         version: 3.4.29
@@ -419,13 +419,13 @@ packages:
     peerDependencies:
       vite: '*'
 
-  '@lightningtv/core@0.0.8':
-    resolution: {integrity: sha512-xdTilfC9oLMAjb//FnhMUjWRKg8C2B+L5p5wby2Su4EDbxzah7fJW8FBcKrr/a3CZGR+P2XbWIhTR1uV9bxcRQ==}
+  '@lightningtv/core@0.0.13':
+    resolution: {integrity: sha512-ri5sFPQGpitPIidJAS2aUjMCBYpDVlfQaab5kVtzbpZpU/+wAcaqC6Zu7H1sfhTeHfZVzBw95EgZCnAcXxDzBw==}
     peerDependencies:
-      '@lightningjs/renderer': '*'
+      '@lightningjs/renderer': ^0.9.0
 
-  '@lightningtv/vue@0.0.3':
-    resolution: {integrity: sha512-ECPYJmgmqsKAHkUOfmy9Zc/cL3w3rXuEzFs1BnS5lJV6p+QY8Kzh1ipQG/pXqyc/6WgEn7jfYlbgYeVQ+y23jQ==}
+  '@lightningtv/vue@0.0.4':
+    resolution: {integrity: sha512-6xbbAvWtoe3qYT9ehj+yR611JfUOmh8BrP5BFWTosIMHo0Ysa7kiOWDo/PBrp8vXpQNyZ91YqgU5oc8HxcD53g==}
     peerDependencies:
       '@lightningjs/renderer': ^0.9.1
       '@vue/reactivity': ^3.4.21
@@ -1893,14 +1893,14 @@ snapshots:
     dependencies:
       vite: 5.3.1
 
-  '@lightningtv/core@0.0.8(@lightningjs/renderer@0.9.2)':
+  '@lightningtv/core@0.0.13(@lightningjs/renderer@0.9.2)':
     dependencies:
       '@lightningjs/renderer': 0.9.2
 
-  '@lightningtv/vue@0.0.3(@lightningjs/renderer@0.9.2)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))':
+  '@lightningtv/vue@0.0.4(@lightningjs/renderer@0.9.2)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))':
     dependencies:
       '@lightningjs/renderer': 0.9.2
-      '@lightningtv/core': 0.0.8(@lightningjs/renderer@0.9.2)
+      '@lightningtv/core': 0.0.13(@lightningjs/renderer@0.9.2)
       '@vue/reactivity': 3.4.29
       '@vue/runtime-core': 3.4.29
       '@vue/shared': 3.4.29
