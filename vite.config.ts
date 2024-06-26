@@ -2,10 +2,12 @@ import { defineConfig } from 'vite';
 import { importChunkUrl } from '@lightningjs/vite-plugin-import-chunk-url';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import hexColorTransform from "@lightningtv/vite-hex-transform";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    hexColorTransform(),
     importChunkUrl(),
     vue({
       template: {
@@ -14,7 +16,7 @@ export default defineConfig({
         },
       },
     }),
-   //vueJsx(),
+   vueJsx(),
   ],
   build: {
     rollupOptions: {
@@ -34,8 +36,5 @@ export default defineConfig({
       "@lightningjs/renderer",
       "@lightningtv/vue",
     ],
-  },
-  optimizeDeps: {
-    exclude: ['@lightningtv/vue'],
   },
 });

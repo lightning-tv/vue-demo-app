@@ -19,7 +19,7 @@ const navButtonStyles = {
   width: 100,
   borderRadius: 8,
   focus: {
-    color: hexColor("#424242"),
+    color: "#424242",
   },
   active: {
     width: 328,

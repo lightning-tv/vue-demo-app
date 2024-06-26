@@ -10,8 +10,6 @@
     "sourceMap": true,
     "declaration": true,
     "noEmit": true,
-    // Temporarily disable this until `solid-js` is released with this PR:
-    // https://github.com/solidjs/solid/pull/1913
     "skipLibCheck": true,
 
     // Type Checking / Syntax Rules
@@ -28,8 +26,7 @@
     "jsxImportSource": "vue",
     "types": ["vue"],
     "paths": {
-      "theme": ["./node_modules/@lightningjs/l3-ui-theme-base"],
-      "@lightningjs/solid": ["./node_modules/@lightningtv/solid"]
+      "theme": ["./node_modules/@lightningjs/l3-ui-theme-base"]
     }
   },
   "include": ["src/**/*"]

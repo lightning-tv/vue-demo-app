@@ -6,7 +6,7 @@ import router from './router';
 const logFps = false;
 Config.debug = true;
 Config.animationsEnabled = true;
-Config.fontSettings.fontFamily = 'Ubuntu';
+Config.fontSettings.fontFamily = 'Roboto';
 Config.fontSettings.color = 0xf6f6f6ff;
 Config.fontSettings.fontSize = 32;
 Config.rendererOptions = {

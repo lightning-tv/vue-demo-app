@@ -23,7 +23,7 @@ const ContentBlockStyle = {
 
 const HeadlineStyles = {
   fontSize: 50,
-  fontFamily: "Ubuntu",
+  fontFamily: "Roboto",
   fontWeight: 700,
   maxLines: 1,
   width: blockWidth,
@@ -32,7 +32,7 @@ const HeadlineStyles = {
 
 const DescriptionStyles = {
   fontSize: 28,
-  fontFamily: "Ubuntu",
+  fontFamily: "Roboto",
   fontWeight: 400,
   lineHeight: 32,
   width: blockWidth,
