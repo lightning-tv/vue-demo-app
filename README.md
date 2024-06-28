@@ -13,3 +13,7 @@ cd vue-demo-app
 pnpm i
 pnpm start
 ```
+
+## Work in Progress
+
+Right now the browse page works and you can infinite scroll down. But if you navigate elsewhere, still a lot of pages needing to be built. Open to help / PRs - trying to duplicate the https://github.com/lightning-tv/solid-demo-app
