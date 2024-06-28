@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import browseProvider from "./api/providers/browse";
-import ContentBlock from "./components/ContentBlock.vue";
-import Row from "./components/Row.vue";
-import Column from "./components/Column.vue";
 import NavDrawer from "./components/NavDrawer.vue";
 import { useFocusManager } from "./keyhandling";
 import { ref, onMounted, watch } from "vue";
-import { activeElement } from "@lightningtv/vue";
+import { ElementNode, activeElement } from "@lightningtv/vue";
 import { debounce } from "vue-debounce";
 import { RouterView } from "vue-router";
 
 useFocusManager();
 const alpha = ref(1);
-const rows = ref([]);
-const column = ref(null);
 const navDrawer = ref(null);
 const globalBackground = ref("");
 const heroContent = ref({});
+let lastFocused: ElementNode | undefined;
 const bgStyles = {
   alpha: alpha.value,
   color: 0xffffffff,
+  transition: {
+    alpha: { duration: 250, easing: "ease-in-out" },
+  },
 };
 
 const delayedBackgrounds = debounce(
@@ -30,6 +28,20 @@ const delayedHero = debounce(
   (content: {}) => (heroContent.value = content || {}),
   200
 );
+
+function focusNavDrawer() {
+  const column = navDrawer.value.$refs.column.$el;
+  if (column.states.has("focus")) {
+    return false;
+  }
+  lastFocused = activeElement.value;
+  return column.setFocus();
+}
+
+function focusLastFocused() {
+  const column = navDrawer.value.$refs.column.$el;
+  return column.states.has("focus") && lastFocused?.setFocus();
+}
 
 watch(
   () => activeElement.value,
@@ -48,16 +60,20 @@ watch(
 </script>
 
 <template>
-  <node :style="{ width: 1920, height: 1080 }">
+  <node
+    ref="{window.APP}"
+    :onLast="() => history.back()"
+    :onMenu="() => navigate('/')"
+    :style="{ width: 1920, height: 1080 }"
+    :onBackspace="focusNavDrawer"
+    :onLeft="focusNavDrawer"
+    :onRight="focusLastFocused"
+  >
     <RouterView />
-    <NavDrawer
-      ref="navDrawer"
-      focusPage="lastFocused.setFocus"
-      showWidgets="showWidgets()"
-    />
+    <NavDrawer ref="navDrawer" :focusPage="() => lastFocused!.setFocus()" />
     <node :width="1920" :height="1080" :zIndex="-5">
       <node ref="bg1" :src="globalBackground" :style="bgStyles" />
-      <node ref="bg2" :style="bgStyles" alpha="0" />
+      <node ref="bg2" :style="bgStyles" :alpha="0" />
       <node
         src="./assets/hero-mask-inverted.png"
         :color="0x000000ff"

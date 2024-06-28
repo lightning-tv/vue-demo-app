@@ -1,5 +1,5 @@
 <template>
-  <view :style="navButtonStyles" v-bind="props" :forwardStates>
+  <view :style="navButtonStyles" v-bind="props" forwardStates="true">
     <view :y="-16">
       <Icon :scale="0.5" :name="props.icon" />
     </view>
@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { hexColor } from "@lightningtv/vue";
 import Icon from "./Icon.vue";
 
 const props = defineProps(["icon"]);
@@ -28,10 +27,10 @@ const navButtonStyles = {
 } as const;
 
 const textStyle = {
-  fontSize: "38px",
-  x: "116px",
-  y: "18px",
-  height: "50px",
+  fontSize: 38,
+  x: 116,
+  y: 18,
+  height: 50,
   alpha: 0,
   active: {
     alpha: 1,

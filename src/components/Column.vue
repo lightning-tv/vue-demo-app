@@ -7,7 +7,7 @@
     :selectedChanged="handleSelectedChanged"
     :style="[style, props.style]"
   >
-    <slot></slot>
+    <slot />
   </node>
 </template>
 

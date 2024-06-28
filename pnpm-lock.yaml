@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@lightningjs/renderer':
-        specifier: ^0.9.2
-        version: 0.9.2
+        specifier: ^0.9.4
+        version: 0.9.4
       '@lightningjs/vite-plugin-import-chunk-url':
         specifier: ^0.3.1
         version: 0.3.1(vite@5.3.1)
       '@lightningtv/vue':
-        specifier: ^0.0.5
-        version: 0.0.5(@lightningjs/renderer@0.9.2)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))
+        specifier: ^0.1.0
+        version: 0.1.0(@lightningjs/renderer@0.9.4)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))
       '@vue/reactivity':
         specifier: ^3.4.29
         version: 3.4.29
@@ -410,8 +410,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lightningjs/renderer@0.9.2':
-    resolution: {integrity: sha512-zR4PUv77hfNsbOx0iSNcCQgyw9vFpBuECbq4MhWSqGE8h8oKRibmpzp3YF4UbJxXtrPDoLWgcosgFNZodGEVcQ==}
+  '@lightningjs/renderer@0.9.4':
+    resolution: {integrity: sha512-+ar/Eg/oOeJ7z2p5FmOVAyv10hLCDLIrkOF29NUcRsrnwCZ8U80bqPozP38CwZ/R8Ob/mbIwITnvQBI0U7SJog==}
     engines: {node: '>= 20.9.0', npm: '>= 10.0.0', pnpm: '>= 8.9.2'}
 
   '@lightningjs/threadx@0.3.5':
@@ -422,16 +422,16 @@ packages:
     peerDependencies:
       vite: '*'
 
-  '@lightningtv/core@0.0.13':
-    resolution: {integrity: sha512-ri5sFPQGpitPIidJAS2aUjMCBYpDVlfQaab5kVtzbpZpU/+wAcaqC6Zu7H1sfhTeHfZVzBw95EgZCnAcXxDzBw==}
+  '@lightningtv/core@0.1.4':
+    resolution: {integrity: sha512-KKTsUPZDeci86qxwBMxm/qcVwWisQ6xr2sqA9ddsn33PbrmVfXwlNg1mLF0uaUq/Wmmv33I4xL7C6iOEeml2Jg==}
     peerDependencies:
-      '@lightningjs/renderer': ^0.9.0
+      '@lightningjs/renderer': ^0.9.4
 
   '@lightningtv/vite-hex-transform@1.0.1':
     resolution: {integrity: sha512-7E/wC8jSd1x86pAk96o9PHPUbS3IIsr1vu3S99R3Qolp5ZzHBnEir7LRs7evoVwNNdR8795Vu800QIYqljWd+w==}
 
-  '@lightningtv/vue@0.0.5':
-    resolution: {integrity: sha512-LtxZenTtQbQXzqx+XmguBGWzRUqtoYF0YzGHHUChz4aTPOyCM+IP+b4OYLVWDMWUFwu8tkrKmiowmg0FINm9Pg==}
+  '@lightningtv/vue@0.1.0':
+    resolution: {integrity: sha512-hTzrXV8nHkJb8440tSo23DrebWCsgpq4yBPM3llWC3sBpJzSmjLBp++8C9jqcg8vUy3mtMpSx8hYDC+Hn4dS4Q==}
     peerDependencies:
       '@lightningjs/renderer': ^0.9.1
       '@vue/reactivity': ^3.4.21
@@ -1887,7 +1887,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@lightningjs/renderer@0.9.2':
+  '@lightningjs/renderer@0.9.4':
     dependencies:
       '@lightningjs/threadx': 0.3.5
       '@protobufjs/eventemitter': 1.1.0
@@ -1899,16 +1899,16 @@ snapshots:
     dependencies:
       vite: 5.3.1
 
-  '@lightningtv/core@0.0.13(@lightningjs/renderer@0.9.2)':
+  '@lightningtv/core@0.1.4(@lightningjs/renderer@0.9.4)':
     dependencies:
-      '@lightningjs/renderer': 0.9.2
+      '@lightningjs/renderer': 0.9.4
 
   '@lightningtv/vite-hex-transform@1.0.1': {}
 
-  '@lightningtv/vue@0.0.5(@lightningjs/renderer@0.9.2)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))':
+  '@lightningtv/vue@0.1.0(@lightningjs/renderer@0.9.4)(@vue/reactivity@3.4.29)(@vue/runtime-core@3.4.29)(@vue/shared@3.4.29)(vue@3.4.29(typescript@5.4.5))':
     dependencies:
-      '@lightningjs/renderer': 0.9.2
-      '@lightningtv/core': 0.0.13(@lightningjs/renderer@0.9.2)
+      '@lightningjs/renderer': 0.9.4
+      '@lightningtv/core': 0.1.4(@lightningjs/renderer@0.9.4)
       '@vue/reactivity': 3.4.29
       '@vue/runtime-core': 3.4.29
       '@vue/shared': 3.4.29

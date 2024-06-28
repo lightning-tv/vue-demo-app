@@ -14,7 +14,7 @@ const Browse = () => import('./pages/Browse.vue');
 // const SuperFlexPage = () => import('./pages/SuperFlexPage.vue');
 // const ButtonsMaterialPage = () => import('./pages/ButtonsMaterialPage.vue');
 // const People = () => import('./pages/People.vue');
-// const Entity = () => import('./pages/Entity.vue');
+const Entity = () => import('./pages/Entity.vue');
 // const NotFound = () => import('./pages/NotFound.vue');
 
 const routes = [
@@ -33,7 +33,7 @@ const routes = [
 //   { path: '/superflex', component: SuperFlexPage },
 //   { path: '/buttonsmaterial', component: ButtonsMaterialPage },
 //   { path: '/entity/people/:id', component: People },
-//   { path: '/entity/:type/:id', component: Entity },
+   { path: '/entity/:type/:id', component: Entity },
 //   { path: '/:pathMatch(.*)*', component: NotFound },
 ];
 
