@@ -1,8 +1,8 @@
-import { ref, type Ref, watch, onMounted } from 'vue';
+import { ref, type Ref, watch } from 'vue';
 
 export function useInfiniteScroll<T>(fetcher: (page: number) => Promise<T[]>) {
   const pages: Ref<T[]> = ref([]);
-  const page: Ref<number> = ref(1);
+  const page: Ref<number> = ref(0);
   const end: Ref<boolean> = ref(false);
 
   const fetchContent = async () => {
@@ -16,8 +16,6 @@ export function useInfiniteScroll<T>(fetcher: (page: number) => Promise<T[]>) {
   };
 
   watch(page, fetchContent);
-
-  onMounted(fetchContent);
 
   return {
     pages,

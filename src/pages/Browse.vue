@@ -4,7 +4,7 @@ import { useInfiniteScroll } from "../components/utils/useInfiniteScroll";
 import ContentBlock from "../components/ContentBlock.vue";
 import Row from "../components/Row.vue";
 import Column from "../components/Column.vue";
-import { ref, watch } from "vue";
+import { ref, watch, watchEffect } from "vue";
 import { ElementNode, activeElement } from "@lightningtv/vue";
 import { debounce } from "vue-debounce";
 import { useRouter } from "vue-router";
@@ -13,6 +13,9 @@ const column = ref(null);
 const globalBackground = ref("");
 const heroContent = ref({});
 const columnY = ref(0);
+const test = ref(false);
+
+const props = defineProps(["filter"]);
 
 const itemsContainer = {
   width: 1920,
@@ -76,13 +79,18 @@ function onEnter(this: ElementNode, event, elm, focusedElm) {
     router.push(focusedElm.item.href);
   }
 }
-
-const { pages, page } = useInfiniteScroll(browseProvider("all"));
-page.value = 1;
+let pages, page;
+watchEffect(() => {
+  const result = useInfiniteScroll(browseProvider(props.filter || "all"));
+  pages = result.pages;
+  page = result.page;
+  page.value = 1;
+});
 </script>
 
 <template>
   <ContentBlock
+    v-show="test"
     :y="360"
     :x="162"
     :title="heroContent.title"

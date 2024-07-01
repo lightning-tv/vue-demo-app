@@ -7,16 +7,18 @@
     :y="15"
     :zIndex="105"
   >
-    <text :x="80" :fontSize="28" fontFamily="Roboto">Built With:</text>
-    <view :y="22" src="./assets/vue.png" :width="80" :height="80" />
-    <view :x="0" :y="120" src="./assets/tmdb.png" :width="80" :height="41" />
+    <text :x="0" :y="40" :fontSize="28" fontFamily="Roboto" :color="0xf6f6f666"
+      >Built With:</text
+    >
+    <view :x="120" :y="10" src="./assets/vue.png" :width="80" :height="80" />
+    <view :x="0" :y="106" src="./assets/tmdb.png" :width="80" :height="41" />
     <text
       :x="90"
       :y="110"
       contain="width"
       :width="160"
       :fontSize="12"
-      :color="0xf6f6f644"
+      :color="0xf6f6f666"
     >
       This product uses the TMDB API but is not endorsed or certified by TMDB.
     </text>
