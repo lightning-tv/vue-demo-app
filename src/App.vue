@@ -5,11 +5,11 @@ import { ref, onMounted, watch } from "vue";
 import { ElementNode, activeElement } from "@lightningtv/vue";
 import { debounce } from "vue-debounce";
 import { RouterView } from "vue-router";
+import { globalBackground } from "./state";
 
 useFocusManager();
 const alpha = ref(1);
 const navDrawer = ref(null);
-const globalBackground = ref("");
 const heroContent = ref({});
 let lastFocused: ElementNode | undefined;
 const bgStyles = {
@@ -19,15 +19,6 @@ const bgStyles = {
     alpha: { duration: 250, easing: "ease-in-out" },
   },
 };
-
-const delayedBackgrounds = debounce(
-  (img: string) => (globalBackground.value = img),
-  400
-);
-const delayedHero = debounce(
-  (content: {}) => (heroContent.value = content || {}),
-  200
-);
 
 function focusNavDrawer() {
   const column = navDrawer.value.$refs.column.$el;
@@ -42,21 +33,6 @@ function focusLastFocused() {
   const column = navDrawer.value.$refs.column.$el;
   return column.states.has("focus") && lastFocused?.setFocus();
 }
-
-watch(
-  () => activeElement.value,
-  (elm, prevFocusedElm) => {
-    if (elm && elm.item) {
-      if (elm.item.backdrop) {
-        delayedBackgrounds(elm.item.backdrop);
-      }
-
-      if (elm.item.heroContent) {
-        delayedHero(elm.item.heroContent);
-      }
-    }
-  }
-);
 </script>
 
 <template>

@@ -1,16 +1,20 @@
 <template>
   <node v-if="data">
-    <node :x="170" onUp="entityActions.setFocus" onEscape="onEscape">
-      <ContentBlock :y="260" :content="data.heroContent"></ContentBlock>
+    <node :x="170" onUp="focusEntity" onEscape="onEscape">
+      <ContentBlock
+        :y="260"
+        :title="data.heroContent.title"
+        :description="data.heroContent.description"
+      ></ContentBlock>
       <Row
         ref="entityActions"
         :y="500"
         :height="90"
         :width="640"
         :gap="40"
-        onDown="columnRef.setFocus"
+        :onDown="focusColumn"
       >
-        <Button :width="300" autofocus="true">Play</Button>
+        <Button :width="300" :autofocus="true">Play</Button>
         <Button :width="300">Resume</Button>
       </Row>
 
@@ -23,20 +27,30 @@
         :zIndex="5"
       >
         <template v-if="recommendations && credits">
-          <Text skipFocus="true" :style="RowTitle">Recommendations</Text>
-          <TileRow
-            onFocus="onRowFocus"
-            onEnter="onEnter"
-            :items="recommendations"
+          <text skipFocus="true" :style="RowTitle">Recommendations</text>
+          <Row
+            :onFocus="onRowFocus"
+            :onEnter="onEnter"
             :width="1620"
-          />
-          <Text skipFocus :style="RowTitle">Cast and Crew</Text>
-          <TileRow
-            onFocus="onRowFocusAnimate"
-            onEnter="onEnter"
-            :items="credits"
-            :width="1620"
-          />
+            justifyContent="spaceBetween"
+          >
+            <node
+              v-for="item in recommendations"
+              :style="styles.Thumbnail"
+              :src="item.src"
+              :item="item"
+            />
+          </Row>
+          <text skipFocus :style="RowTitle">Cast and Crew</text>
+          <Row :onFocus="onRowFocusAnimate" :onEnter="onEnter" :width="1620">
+            <node
+              v-for="item in credits"
+              :style="styles.Thumbnail"
+              :src="item.src"
+              :item="item"
+              justifyContent="spaceBetween"
+            />
+          </Row>
         </template>
       </Column>
       <node
@@ -56,23 +70,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { setActiveElement } from "@lightningtv/vue";
-import Column from "../components/Column";
-import Row from "../components/Row";
-import Button from "../components/Button";
-import { TileRow } from "../components";
-import { setGlobalBackground } from "../state";
-import ContentBlock from "../components/ContentBlock";
-import styles from "../styles";
+import Row from "../components/Row.vue";
+import Column from "../components/Column.vue";
+import ContentBlock from "../components/ContentBlock.vue";
+import Button from "../components/Button.vue";
+import * as styles from "../styles.js";
 import * as provider from "../api/providers/entity";
 import { assertTruthy } from "@lightningjs/renderer/utils";
+import { globalBackground } from "../state";
 import type { Tile } from "../api/formatters/ItemFormatter";
 
 const route = useRoute();
 const router = useRouter();
-
 const data = ref(null);
 const credits = ref(null);
 const recommendations = ref(null);
@@ -87,20 +98,16 @@ const RowTitle = {
   zIndex: 2,
 };
 
-const fetchData = async () => {
-  data.value = await provider.getInfo({ ...route.params });
-  credits.value = await provider.getCredits({ ...route.params });
-  recommendations.value = await provider.getRecommendations({
-    ...route.params,
-  });
-};
-
-onMounted(fetchData);
+watchEffect(async () => {
+  data.value = await provider.getInfo(route.params);
+  credits.value = await provider.getCredits(route.params);
+  recommendations.value = await provider.getRecommendations(route.params);
+});
 
 watch(
   data,
   (newData) => {
-    setGlobalBackground(newData.backgroundImage);
+    globalBackground.value = newData?.backgroundImage;
   },
   { immediate: true }
 );
@@ -129,6 +136,14 @@ function onRowFocusAnimate() {
   columnRef.value.y = 200;
   backdropRef.value.y = 160;
   backdropRef.value.alpha = 0.9;
+}
+
+function focusColumn() {
+  columnRef.value.$el.setFocus();
+}
+
+function focusEntity() {
+  entityActions.value.$el.setFocus();
 }
 
 function onEnter() {

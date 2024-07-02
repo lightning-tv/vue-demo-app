@@ -1,5 +1,5 @@
 <template>
-  <view :style="navButtonStyles" v-bind="props" forwardStates="true">
+  <view :style="navButtonStyles" v-bind="props" :forwardStates="true">
     <view :y="-16">
       <Icon :scale="0.5" :name="props.icon" />
     </view>

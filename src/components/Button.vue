@@ -1,37 +1,40 @@
 <template>
   <node
     v-bind="props"
-    :color="props.backgroundColor"
-    :contentColor="props.contentColor"
-    :justifyContent="props.justify"
-    :itemSpacing="props.contentSpacing"
-    :style="[
-      props.style,
-      styles.Container.tones?.[props.tone ?? styles.tone],
-      styles.Container.base,
-    ]"
-    forwardStates
+    :style="[props.style, styles.Container.base]"
+    :forwardStates="true"
   >
-    <text><slot></slot></text>
+    <text :style="styles.Text"><slot></slot></text>
   </node>
 </template>
 
 <script setup lang="ts">
+import theme from "theme";
 const props = defineProps({
-  backgroundColor: String,
-  contentColor: String,
-  justify: String,
-  contentSpacing: Number,
   style: Object,
-  tone: String,
 });
 const styles = {
   Container: {
-    base: {}, // Add your base styles here
-    tones: {
-      // Add your tone styles here
+    base: {
+      height: 92,
+      display: "flex",
+      padding: [50, 30],
+      color: 0xffffff1a,
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: 4,
+      contentColor: theme.color.fillNeutral,
+      focus: {
+        color: 0xffffffff,
+      },
     },
   },
-  tone: "", // Default tone if any
+  Text: {
+    fontSize: 24,
+    color: 0xffffffff,
+    focus: {
+      color: 0x000000ff,
+    },
+  },
 };
 </script>

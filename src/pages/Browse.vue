@@ -8,9 +8,10 @@ import { ref, watch, watchEffect } from "vue";
 import { ElementNode, activeElement } from "@lightningtv/vue";
 import { debounce } from "vue-debounce";
 import { useRouter } from "vue-router";
+import { globalBackground } from "../state";
+import * as styles from "../styles.js";
 
 const column = ref(null);
-const globalBackground = ref("");
 const heroContent = ref({});
 const columnY = ref(0);
 const test = ref(false);
@@ -23,16 +24,6 @@ const itemsContainer = {
   y: 560,
   x: 0,
   zIndex: 2,
-};
-const Thumbnail = {
-  borderRadius: 16,
-  width: 185,
-  height: 278,
-  scale: 1,
-  zIndex: 2,
-  transition: { scale: { duration: 250, easing: "ease-in-out" } },
-  border: { width: 0, color: 0x00000000 },
-  focus: { scale: 1.1, border: { color: 0xffffff66, width: 8 } },
 };
 
 const delayedBackgrounds = debounce(
@@ -117,7 +108,7 @@ watchEffect(() => {
       >
         <node
           v-for="item in row"
-          :style="Thumbnail"
+          :style="styles.Thumbnail"
           :src="item.src"
           :item="item"
         />
