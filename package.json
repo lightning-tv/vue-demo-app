@@ -29,7 +29,7 @@
   "author": "Chris Lorenzo",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lightningtv/vite-hex-transform": "^1.0.1",
+    "@lightningtv/vite-hex-transform": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-vue": "^5.0.5",
@@ -40,8 +40,9 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.3.1"
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3",
+    "vite-bundle-visualizer": "^1.2.1"
   },
   "lint-staged": {
     "*.ts": [
@@ -50,15 +51,15 @@
     "*.{js,cjs,md}": "prettier --write"
   },
   "dependencies": {
-    "@lightningjs/renderer": "^0.9.4",
+    "@lightningjs/renderer": "1.0.0-rc.0",
     "@lightningjs/vite-plugin-import-chunk-url": "^0.3.1",
-    "@lightningtv/vue": "^0.1.0",
-    "@vue/reactivity": "^3.4.29",
-    "@vue/runtime-core": "^3.4.29",
-    "@vue/shared": "^3.4.29",
-    "vue": "^3.4.29",
+    "@lightningtv/vue": "^0.2.1",
+    "@vue/reactivity": "^3.4.31",
+    "@vue/runtime-core": "^3.4.31",
+    "@vue/shared": "^3.4.31",
+    "vue": "^3.4.31",
     "vue-debounce": "^5.0.0",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.4.0"
   },
   "repository": {
     "type": "git",

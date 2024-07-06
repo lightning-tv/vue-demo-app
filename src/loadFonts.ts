@@ -1,27 +1,12 @@
 import {
-  CoreExtension,
-  WebTrFontFace,
   SdfTrFontFace,
   type Stage,
-} from "@lightningjs/renderer/core";
+} from "@lightningjs/renderer";
 
 const basePath = import.meta.env.BASE_URL;
 
-export default class AppCoreExtension extends CoreExtension {
-  async run(stage: Stage) {
-    // stage.fontManager.addFontFace(
-    //   new WebTrFontFace({
-    //     fontFamily: "NotoSans",
-    //     descriptors: {},
-    //     fontUrl: basePath + "fonts/NotoSans-Regular.ttf",
-    //     metrics: {
-    //       ascender: 1069,
-    //       descender: -293,
-    //       lineGap: 0,
-    //       unitsPerEm: 1000
-    //     }
-    //   }),
-    // );
+export default function loadFonts(stage: Stage) {
+  
     stage.fontManager.addFontFace(
       new SdfTrFontFace(
         'msdf',
@@ -65,5 +50,4 @@ export default class AppCoreExtension extends CoreExtension {
         }
       ),
     );
-  }
 }
