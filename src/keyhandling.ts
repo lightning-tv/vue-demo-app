@@ -83,7 +83,7 @@ declare module '@lightningtv/vue' {
   }
 
   interface TextNode {
-    skipFocus?: undefined;
+    skipFocus?: boolean;
   }
 }
 

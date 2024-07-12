@@ -1,3 +1,3 @@
 import { ref } from "vue";
 
-export const globalBackground = ref("");
+export const globalBackground = ref();

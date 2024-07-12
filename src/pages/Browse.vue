@@ -80,13 +80,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <ContentBlock
-    v-show="test"
-    :y="360"
-    :x="162"
-    :title="heroContent.title"
-    :description="heroContent.description"
-  />
+  <ContentBlock v-show="test" :y="360" :x="162" :content="heroContent" />
   <view clipping="true" :style="itemsContainer">
     <Column
       ref="column"

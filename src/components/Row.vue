@@ -19,7 +19,7 @@ import { withScrolling } from "./utils/withScrolling";
 const props = defineProps({
   selected: {
     type: Number,
-    default: 0,
+    default: null,
   },
   scrollIndex: Number,
   onLeft: Function,

@@ -28,7 +28,8 @@ export function handleNavigation(
   return function () {
     const numChildren = this.children.length;
     const wrap = this.wrap;
-    const lastSelected = this.selected || 0;
+    this.selected = this.selected || this.children.findIndex(elm => !elm.skipFocus) || 0;
+    const lastSelected = this.selected;
 
     if (numChildren === 0) {
       return false;
@@ -36,7 +37,7 @@ export function handleNavigation(
 
     if (direction === 'right' || direction === 'down') {
       do {
-        this.selected = ((this.selected || 0) % numChildren) + 1;
+        this.selected = (this.selected % numChildren) + 1;
         if (this.selected >= numChildren) {
           if (!wrap) {
             this.selected = undefined;
@@ -47,7 +48,7 @@ export function handleNavigation(
       } while (this.children[this.selected]?.skipFocus);
     } else if (direction === 'left' || direction === 'up') {
       do {
-        this.selected = ((this.selected || 0) % numChildren) - 1;
+        this.selected = (this.selected % numChildren) - 1;
         if (this.selected < 0) {
           if (!wrap) {
             this.selected = undefined;

@@ -11,7 +11,7 @@ Config.fontSettings.color = 0xf6f6f6ff;
 Config.fontSettings.fontSize = 32;
 Config.rendererOptions = {
   fpsUpdateInterval: logFps ? 200 : 0,
-  enableInspector: false,
+  enableInspector: true,
   numImageWorkers: 0,
   // deviceLogicalPixelRatio: 1
 };

@@ -1,11 +1,7 @@
 <template>
   <node v-if="data">
-    <node :x="170" onUp="focusEntity" onEscape="onEscape">
-      <ContentBlock
-        :y="260"
-        :title="data.heroContent.title"
-        :description="data.heroContent.description"
-      ></ContentBlock>
+    <node :x="170" :onUp="focusEntity">
+      <ContentBlock :y="260" :content="data.heroContent"></ContentBlock>
       <Row
         ref="entityActions"
         :y="500"
@@ -18,20 +14,21 @@
         <Button :width="300">Resume</Button>
       </Row>
 
-      <Column
-        ref="columnRef"
-        :x="0"
-        :y="columnY"
-        :style="styles.Column"
-        :height="880"
-        :zIndex="5"
-      >
-        <template v-if="recommendations && credits">
-          <text skipFocus="true" :style="RowTitle">Recommendations</text>
+      <template v-if="recommendations && credits">
+        <Column
+          ref="columnRef"
+          :x="0"
+          :y="columnY"
+          :style="styles.Column"
+          :height="880"
+          :zIndex="5"
+        >
+          <text :skipFocus="true" :style="RowTitle">Recommendations</text>
           <Row
             :onFocus="onRowFocus"
             :onEnter="onEnter"
             :width="1620"
+            :height="300"
             justifyContent="spaceBetween"
           >
             <node
@@ -41,18 +38,23 @@
               :item="item"
             />
           </Row>
-          <text skipFocus :style="RowTitle">Cast and Crew</text>
-          <Row :onFocus="onRowFocusAnimate" :onEnter="onEnter" :width="1620">
+          <text :skipFocus="true" :style="RowTitle">Cast and Crew</text>
+          <Row
+            :onFocus="onRowFocusAnimate"
+            :onEnter="onEnter"
+            :width="1620"
+            :height="300"
+            justifyContent="spaceBetween"
+          >
             <node
               v-for="item in credits"
               :style="styles.Thumbnail"
               :src="item.src"
               :item="item"
-              justifyContent="spaceBetween"
             />
           </Row>
-        </template>
-      </Column>
+        </Column>
+      </template>
       <node
         ref="backdropRef"
         :style="Backdrop"
@@ -70,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, watchEffect } from "vue";
+import { ref, watch, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Row from "../components/Row.vue";
 import Column from "../components/Column.vue";
@@ -108,6 +110,7 @@ watch(
   data,
   (newData) => {
     globalBackground.value = newData?.backgroundImage;
+    newData && focusEntity();
   },
   { immediate: true }
 );
@@ -126,14 +129,14 @@ const Backdrop = {
 
 function onRowFocus() {
   this.children.selected?.setFocus();
-  columnRef.value.y = columnY;
+  columnRef.value.$el.y = columnY;
   backdropRef.value.y = columnY;
   backdropRef.value.alpha = 0;
 }
 
 function onRowFocusAnimate() {
   this.children.selected?.setFocus();
-  columnRef.value.y = 200;
+  columnRef.value.$el.y = 200;
   backdropRef.value.y = 160;
   backdropRef.value.alpha = 0.9;
 }
@@ -143,13 +146,16 @@ function focusColumn() {
 }
 
 function focusEntity() {
-  entityActions.value.$el.setFocus();
+  const el = entityActions.value?.$el;
+  if (el) {
+    el.selected = 0;
+    el.setFocus();
+  }
 }
 
-function onEnter() {
-  const entity = this.children.find((c) => c.states!.has("focus"));
-  assertTruthy(entity && entity.href);
-  router.push(entity.href);
+function onEnter(e, elm, finalFocusElm) {
+  assertTruthy(finalFocusElm && finalFocusElm.item?.href);
+  router.push(finalFocusElm.item.href);
 }
 
 let columnRef = ref(null);

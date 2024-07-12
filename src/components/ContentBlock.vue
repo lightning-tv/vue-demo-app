@@ -1,14 +1,21 @@
 <template>
   <node id="contentBlock" :style="ContentBlockStyle">
-    <text :style="HeadlineStyles">{{ title }}</text>
-    <text :style="DescriptionStyles">{{ description }}</text>
+    <text :style="HeadlineStyles">{{ content.title }}</text>
+    <text :style="DescriptionStyles">{{ content.description }}</text>
+    <Metadata
+      v-if="content && content.voteCount"
+      :metaText="content.metaText"
+      :badges="content.badges"
+      :voteCount="content.voteCount"
+      :voteAverage="content.voteAverage"
+    />
   </node>
 </template>
 
 <script setup lang="ts">
+import Metadata from "./Metadata.vue";
 defineProps({
-  title: String,
-  description: String,
+  content: Object,
 });
 
 const blockWidth = 1200;

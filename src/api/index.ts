@@ -12,6 +12,9 @@ const defaultFetchParams = {
 };
 
 export function getImageUrl(path: string, posterSize: string = basePosterSize) {
+  if (!path) {
+    return '';
+  }
   return baseImageUrl + posterSize + path;
 }
 

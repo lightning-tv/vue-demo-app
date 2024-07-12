@@ -51,5 +51,5 @@ export function convertItemsToTiles(items: any[] = []): Tile[] {
       title: item.title || item.name,
       description: item.overview,
     },
-  }));
+  })).filter((item) => item.src);
 }

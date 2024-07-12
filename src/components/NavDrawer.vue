@@ -38,11 +38,11 @@
       Movies
     </NavButton>
     <NavButton icon="tv" @enter="handleNavigate('/browse/tv')">TV</NavButton>
-    <NavButton icon="experiment" @enter="handleNavigate('/examples')">
+    <!-- <NavButton icon="experiment" @enter="handleNavigate('/examples')">
       Examples
-    </NavButton>
+    </NavButton> -->
   </Column>
-  <view skipFocus ref="backdrop" :style="styles.Gradient"></view>
+  <view :skipFocus="true" ref="backdrop" :style="styles.Gradient"></view>
 </template>
 
 <script setup lang="ts">

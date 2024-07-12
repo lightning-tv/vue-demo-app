@@ -28,6 +28,10 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
   },
+  // This allows us to use pnpm link for @lightningtv/vue
+  optimizeDeps: {
+    exclude: ["@lightningjs/renderer", "@lightningtv/vue", "@lightningtv/core", "vue"],
+  },
   resolve: {
     alias: {
       theme: path.resolve(__dirname, './src/material-theme.json'),
