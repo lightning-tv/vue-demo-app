@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import { importChunkUrl } from '@lightningjs/vite-plugin-import-chunk-url';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import hexColorTransform from "@lightningtv/vite-hex-transform";
@@ -9,7 +8,6 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     hexColorTransform(),
-    importChunkUrl(),
     vue({
       template: {
         compilerOptions: {
@@ -30,7 +28,8 @@ export default defineConfig({
   },
   // This allows us to use pnpm link for @lightningtv/vue
   optimizeDeps: {
-    exclude: ["@lightningjs/renderer", "@lightningtv/vue", "@lightningtv/core", "vue"],
+    exclude: ["@lightningjs/renderer", "@lightningtv/vue", "@lightningtv/solid-ui", 
+      "@lightningtv/core", "vue", "@vue/runtime-core", "@vue/reactivity", "@lightningtv/solid"],
   },
   resolve: {
     alias: {
@@ -42,7 +41,7 @@ export default defineConfig({
       "@vue/runtime-core",
       "@vue/reactivity",
       "@lightningjs/renderer",
-      "@lightningtv/vue",
+      "@lightningtv/core",
     ],
   },
 });

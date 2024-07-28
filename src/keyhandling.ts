@@ -121,7 +121,7 @@ export const useFocusManager = (userKeyMap?: Partial<KeyMap>) => {
   let prevFocusPath: ElementNode[] = [];
 
   watch(
-    () => activeElement.value,
+    activeElement,
     (currentFocusedElm, prevFocusedElm) => {
       const newFocusedElms: ElementNode[] = [];
       let current = currentFocusedElm;

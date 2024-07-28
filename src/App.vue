@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import NavDrawer from "./components/NavDrawer.vue";
-import { useFocusManager } from "./keyhandling";
-import { ref, onMounted, watch } from "vue";
-import { ElementNode, activeElement } from "@lightningtv/vue";
-import { debounce } from "vue-debounce";
+import { ref, watch, onUnmounted } from "vue";
+import { ElementNode, activeElement, useFocusManager } from "@lightningtv/vue";
 import { RouterView } from "vue-router";
 import { globalBackground } from "./state";
 
-useFocusManager();
+const { cleanup } = useFocusManager();
+onUnmounted(cleanup);
+
 const alpha = 1;
 const navDrawer = ref(null);
 let active = 0;

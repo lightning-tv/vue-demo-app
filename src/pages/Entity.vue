@@ -22,6 +22,7 @@
           :style="styles.Column"
           :height="880"
           :zIndex="5"
+          scroll="none"
         >
           <text :skipFocus="true" :style="RowTitle">Recommendations</text>
           <Row
@@ -74,8 +75,8 @@
 <script setup lang="ts">
 import { ref, watch, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import Row from "../components/Row.vue";
-import Column from "../components/Column.vue";
+import Row from "@lightningtv/vue/row";
+import Column from "@lightningtv/vue/column";
 import ContentBlock from "../components/ContentBlock.vue";
 import Button from "../components/Button.vue";
 import * as styles from "../styles.js";
@@ -128,14 +129,14 @@ const Backdrop = {
 };
 
 function onRowFocus() {
-  this.children.selected?.setFocus();
+  this.selectedNode?.setFocus();
   columnRef.value.$el.y = columnY;
   backdropRef.value.y = columnY;
   backdropRef.value.alpha = 0;
 }
 
 function onRowFocusAnimate() {
-  this.children.selected?.setFocus();
+  this.selectedNode?.setFocus();
   columnRef.value.$el.y = 200;
   backdropRef.value.y = 160;
   backdropRef.value.alpha = 0.9;

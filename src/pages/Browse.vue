@@ -2,8 +2,8 @@
 import browseProvider from "../api/providers/browse";
 import { useInfiniteScroll } from "../components/utils/useInfiniteScroll";
 import ContentBlock from "../components/ContentBlock.vue";
-import Row from "../components/Row.vue";
-import Column from "../components/Column.vue";
+import Row from "@lightningtv/vue/row";
+import Column from "@lightningtv/vue/column";
 import { ref, watch, watchEffect } from "vue";
 import { ElementNode, activeElement } from "@lightningtv/vue";
 import { debounce } from "vue-debounce";
@@ -13,7 +13,7 @@ import * as styles from "../styles.js";
 
 const column = ref(null);
 const heroContent = ref({});
-const columnY = ref(0);
+const columnY = ref(24);
 const test = ref(false);
 
 const props = defineProps(["filter"]);
@@ -51,7 +51,6 @@ watch(
 );
 
 function onRowFocus(this: ElementNode) {
-  this.children.selected?.setFocus();
   columnY.value = (this.y || 0) * -1 + 24;
   let numPages = pages.value.length;
   this.parent!.selected = this.parent!.children.indexOf(this);
@@ -87,6 +86,7 @@ watchEffect(() => {
       v-if="pages.length"
       :x="150"
       :y="columnY"
+      scroll="none"
       :width="1920"
       :height="1080"
       :autofocus="true"

@@ -49,7 +49,7 @@
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import NavButton from "./NavButton.vue";
-import Column from "./Column.vue";
+import Column from "@lightningtv/vue/column";
 import styles from "./NavDrawer.styles";
 
 const props = defineProps({
@@ -63,7 +63,7 @@ const route = useRoute();
 function onFocus() {
   backdrop.value.states.add("focus");
   this.children.forEach((c) => c.states?.add("active"));
-  this.children.selected.setFocus();
+  this.selectedNode?.setFocus();
 }
 
 function onBlur() {
