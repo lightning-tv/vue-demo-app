@@ -2,8 +2,8 @@
 import browseProvider from "../api/providers/browse";
 import { useInfiniteScroll } from "../components/utils/useInfiniteScroll";
 import ContentBlock from "../components/ContentBlock.vue";
-import Row from "@lightningtv/vue/row";
-import Column from "@lightningtv/vue/column";
+import Row from "@lightningtv/vue/Row.vue";
+import Column from "@lightningtv/vue/Column.vue";
 import { ref, watch, watchEffect } from "vue";
 import { ElementNode, activeElement } from "@lightningtv/vue";
 import { debounce } from "vue-debounce";

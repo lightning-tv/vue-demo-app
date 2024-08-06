@@ -75,8 +75,8 @@
 <script setup lang="ts">
 import { ref, watch, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import Row from "@lightningtv/vue/row";
-import Column from "@lightningtv/vue/column";
+import Row from "@lightningtv/vue/Row.vue";
+import Column from "@lightningtv/vue/Column.vue";
 import ContentBlock from "../components/ContentBlock.vue";
 import Button from "../components/Button.vue";
 import * as styles from "../styles.js";
